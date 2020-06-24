@@ -91,6 +91,12 @@ ASN1.prototype.toDOM = function (spaces) {
         content = content.replace(/</g, "&lt;");
         content = content.replace(/\n/g, "<br>");
     }
+    if (content !== null) {
+        var copy = DOM.tag("a", "");
+        copy.innerHTML = "Copy"
+        copy.href = "javascript:alert('"+content.split("<br>").join("").replace(/\([^)]*\)/, "")+"')"
+        head.appendChild(copy); 
+    }
     node.appendChild(head);
     this.node = node;
     this.head = head;
